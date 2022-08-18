@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bytedance.project.mapper.PageContentMapper">
+
+    <resultMap id="BaseResultMap" type="com.bytedance.project.model.entity.PageContent">
+            <id property="articleId" column="article_id" jdbcType="BIGINT"/>
+            <result property="coverImage" column="cover_image" jdbcType="VARCHAR"/>
+            <result property="title" column="title" jdbcType="VARCHAR"/>
+            <result property="brief" column="brief" jdbcType="VARCHAR"/>
+            <result property="userName" column="user_name" jdbcType="VARCHAR"/>
+            <result property="avatar" column="avatar" jdbcType="VARCHAR"/>
+            <result property="content" column="content" jdbcType="VARCHAR"/>
+            <result property="ctime" column="ctime" jdbcType="TIMESTAMP"/>
+            <result property="mtime" column="mtime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        article_id,cover_image,title,
+        brief,user_name,avatar,
+        content,ctime,mtime
+    </sql>
+    <insert id="postArticle">
+        insert into page_content(
+            article_id,content, title, user_name,cover_image,brief,avatar,ctime,mtime)
+        values(#{article.articleId},#{article.content}, #{article.title}, #{article.userName},
+               #{article.coverImage},#{article.brief},#{article.avatar},#{article.ctime},#{article.mtime})
+    </insert>
+</mapper>
